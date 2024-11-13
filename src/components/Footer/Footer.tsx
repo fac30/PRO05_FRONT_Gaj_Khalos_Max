@@ -2,7 +2,7 @@ import { FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-midnight-blue text-soft-white py-6 mt-12">
+    <footer className="bg-midnight-blue text-soft-white py-6 mt-0"> 
       <div className="max-w-screen-xl mx-auto px-4 text-center">
         <p className="text-sm mb-4">&copy; 2024 Pokémon Collections. All rights reserved.</p>
         

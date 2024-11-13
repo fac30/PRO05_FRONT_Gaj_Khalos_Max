@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps {
-  children: React.ReactNode; 
+  children: React.ReactNode;
   onClick?: () => void; 
   href?: string;
   className?: string; 
@@ -15,11 +15,16 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   type = 'button',
 }) => {
+  const baseClass = 'inline-block py-2 px-6 rounded-lg font-semibold transition-all';
+  const defaultButtonClass = 'bg-electric-yellow text-midnight-blue hover:bg-midnight-blue hover:text-soft-white';
+  const childrenText = children ? children.toString() : 'Button';
+
   if (href) {
     return (
       <a
         href={href}
-        className={`inline-block text-midnight-blue font-semibold hover:text-electric-yellow ${className}`}
+        className={`${baseClass} ${defaultButtonClass} ${className}`}
+        aria-label={childrenText}
       >
         {children}
       </a>
@@ -30,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       type={type}
-      className={`inline-block bg-electric-yellow text-midnight-blue py-2 px-6 rounded-lg font-semibold hover:bg-midnight-blue hover:text-soft-white transition-all ${className}`}
+      className={`${baseClass} ${defaultButtonClass} ${className}`}
     >
       {children}
     </button>

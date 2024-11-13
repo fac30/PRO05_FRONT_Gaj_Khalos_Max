@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
 interface LogoProps {
@@ -7,6 +8,11 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ size = 64, className = '' }) => {
+  const navigate = useNavigate(); 
+  const handleClick = () => {
+    navigate('/'); 
+  };
+
   return (
     <img
       src={logo}
@@ -14,6 +20,7 @@ const Logo: React.FC<LogoProps> = ({ size = 64, className = '' }) => {
       width={size}
       height={size}
       className={`inline-block ${className}`}
+      onClick={handleClick} 
     />
   );
 };
