@@ -2,9 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import "./App.css";
+import Pokémon from "./pages/Pokémon";
+import Collections from "./pages/Collections";
 
 function App() {
   return (
@@ -13,8 +12,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/pokémon" element={<Pokémon />} />
+          <Route path="/collections" element={<Collections />} />
         </Routes>
         <Footer />
       </Router>

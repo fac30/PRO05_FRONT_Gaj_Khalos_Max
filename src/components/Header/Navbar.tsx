@@ -4,7 +4,7 @@ const navItemClasses = "hover:text-electric-yellow transition-colors duration-30
 
 const NAV_ITEMS = [
   { name: "Home", to: "/" },
-  { name: "Pokémon", to: "/pokemon" },
+  { name: "Pokémon", to: "/pokémon" },
   { name: "Collections", to: "/collections" },
 ];
 
