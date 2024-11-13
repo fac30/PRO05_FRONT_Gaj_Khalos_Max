@@ -1,8 +1,9 @@
 import { FaGithub, FaTwitter, FaInstagram } from "react-icons/fa"; 
+import logo2 from '../../assets/logo2.png'; 
 
 export default function Footer() {
   return (
-    <footer className="bg-midnight-blue text-soft-white py-6 mt-0"> 
+    <footer className="bg-midnight-blue text-soft-white py-16 pb-1 mt-0 relative">
       <div className="max-w-screen-xl mx-auto px-4 text-center">
         <p className="text-sm mb-4">&copy; 2024 Pokémon Collections. All rights reserved.</p>
         
@@ -32,6 +33,13 @@ export default function Footer() {
             <FaInstagram size={24} />
           </a>
         </div>
+      </div>
+      <div className="absolute top-[-22px] right-4 transform translate-x-0 z-10">
+        <img
+          src={logo2}  
+          alt="Pokémon Logo"
+          className="w-24 h-auto transform rotate-180"
+        />
       </div>
     </footer>
   );
