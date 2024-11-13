@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import Button from '../components/Button/Button';
 import SectionWithItems from '../components/Section/SectionWithItems';
 import StepItem from '../components/Section/StepItem';
