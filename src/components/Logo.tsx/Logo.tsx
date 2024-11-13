@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/logo.png';
 
 interface LogoProps {
   size?: number;
@@ -8,7 +9,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ size = 64, className = '' }) => {
   return (
     <img
-      src="/assets/logo.png"
+      src={logo}
       alt="Pokemon Logo"
       width={size}
       height={size}
