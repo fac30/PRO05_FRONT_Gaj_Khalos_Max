@@ -5,7 +5,8 @@ export default function Footer() {
   return (
     <footer className="bg-midnight-blue text-soft-white py-16 pb-1 mt-0 relative">
       <div className="max-w-screen-xl mx-auto px-4 text-center">
-        <p className="text-sm mb-4">&copy; 2024 Pokémon Collections. All rights reserved.</p>
+        <p className="text-sm mb-4">&copy; 2024 PokéLike. All rights reserved.</p>
+
         
         <div className="flex justify-center space-x-6 mb-4">
           <a
