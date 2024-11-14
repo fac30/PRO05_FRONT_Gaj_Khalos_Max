@@ -6,7 +6,8 @@ export default function Header() {
     <header className="bg-midnight-blue text-soft-white py-4">
       <div className="flex items-center space-x-4 px-4">
         <Logo size={40} />
-        <h1 className="text-2xl font-bold">Pokémon Collections</h1>
+        <h1 className="text-2xl font-bold">PokéLike</h1>
+
       </div>
       <Navbar />
     </header>
