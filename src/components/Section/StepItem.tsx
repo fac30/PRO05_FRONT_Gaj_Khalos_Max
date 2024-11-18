@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 
 interface StepItemProps {
   title: string;
@@ -14,4 +14,4 @@ const StepItem: React.FC<StepItemProps> = ({ title, description }) => {
   );
 };
 
-export default StepItem;
+export default StepItem; */
