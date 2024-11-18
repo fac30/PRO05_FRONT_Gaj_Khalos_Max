@@ -18,7 +18,7 @@ const SectionWithItems: React.FC<SectionWithItemsProps> = ({ title, items }) => 
         {items.map((item, index) => (
           <div key={index} className="bg-soft-white dark:bg-slate-gray shadow-lg p-6 rounded-lg">
             <h3 className="text-2xl font-semibold text-midnight-blue dark:text-soft-white">{item.title}</h3>
-            <p className="mt-2 text-gray-600 dark:text-soft-gray">{item.description}</p>
+            <p className="mt-2 text-gray-600 dark:text-pure-white">{item.description}</p>
           </div>
         ))}
       </div>

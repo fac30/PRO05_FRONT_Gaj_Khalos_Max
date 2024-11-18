@@ -1,6 +1,6 @@
 export default function Pokémon() {
   return (
-    <main className="bg-soft-white dark:bg-dark-charcoal text-midnight-blue dark:text-soft-gray p-8">
+    <main className="bg-soft-white dark:bg-dark-charcoal text-midnight-blue dark:text-pure-white p-8">
       <h2 className="text-3xl font-bold text-center">Pokémon Collection</h2>
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-white dark:bg-slate-gray p-4 rounded-lg shadow-md text-center">

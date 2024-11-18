@@ -17,7 +17,7 @@ export default {
         // Dark mode colors
         'dark-charcoal': '#121212',
         'golden-yellow': '#D4A017',
-        'soft-gray': '#FFFFFF',
+        'pure-white': '#FFFFFF',
         'forest-green': '#1F5B4A',
         'steel-gray': '#3A3A3A',
       },
