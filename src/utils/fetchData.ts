@@ -1,15 +1,27 @@
-export async function fetchData (api: string, query: string, method: string = 'GET'): Promise<any> {
-    try {
-        const response = await fetch(`https://${api}/${query}`, {
-            method: `${method}`,
-            headers: {
-            "Content-Type": "application/json",
-            },
-        });
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
+export async function fetchData(
+  query: string,
+  method: string = "GET",
+  body?: string
+): Promise<any> {
+  try {
+    const response = await fetch(`http://localhost:5050/${query}`, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      ...(body && { body }),
+    });
+
+    // Check if the response is OK before parsing as JSON
+    if (!response.ok) {
+      console.error("HTTP error:", response.status, response.statusText);
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-};
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
