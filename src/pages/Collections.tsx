@@ -13,7 +13,7 @@ export default function Collections() {
   };
 
   return (
-    <main className="bg-soft-white dark:bg-dark-charcoal text-midnight-blue dark:text-pure-white p-8 transition-colors duration-300">
+    <main className="bg-soft-white dark:bg-dark-charcoal text-midnight-blue dark:text-pure-white p-8 transition-colors duration-300 min-h-screen flex flex-col">
       <h2 className="text-3xl font-bold text-center">Your Collections</h2>
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {collections.map((collection, index) => (
@@ -23,13 +23,16 @@ export default function Collections() {
           </div>
         ))}
       </div>
-      <button
-        className="fixed bottom-8 right-8 bg-electric-yellow dark:bg-electric-yellow text-white rounded-full p-4 shadow-lg z-50"
-        onClick={() => setModalOpen(true)}
-        aria-label="Make your own collection"
-      >
-        <FaPlus size={24} />
-      </button>
+      <div className="flex justify-center mt-auto mb-8">
+        <button
+          className="text-white bg-electric-yellow dark:bg-electric-yellow py-2 px-6 rounded-lg font-semibold hover:bg-midnight-blue hover:text-soft-white transition-all"
+          onClick={() => setModalOpen(true)}
+          aria-label="Create a new collection"
+        >
+          <FaPlus size={20} className="inline-block mr-2" />
+          Make a new collection
+        </button>
+      </div>
       <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
         <CollectionForm onSubmit={handleCreateCollection} onClose={() => setModalOpen(false)} />
       </Modal>
