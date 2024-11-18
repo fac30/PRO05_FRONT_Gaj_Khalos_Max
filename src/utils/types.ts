@@ -7,4 +7,5 @@ export interface Pokemon extends BaseEntity {
   name: string;
   imageUrl: string;
   apiUrl: string;
+  likes: number;
 }
