@@ -13,10 +13,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     <>
       <div
         className="fixed inset-0 bg-black opacity-50 z-40"
-        onClick={onClose} 
+        onClick={onClose}
       ></div>
       <div className="fixed inset-0 z-50 flex justify-center items-center p-4">
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md relative">
+        <div className="bg-white text-midnight-blue p-8 rounded-lg shadow-lg w-full max-w-md relative">
           {children}
         </div>
       </div>
