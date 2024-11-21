@@ -1,41 +1,81 @@
-import { useState } from 'react';
-import { FaPlus } from 'react-icons/fa'; 
-import Modal from '../components/Modal/Modal';
-import CollectionForm from '../components/Form/CollectionForm';
+import { useEffect, useState } from "react";
+import { fetchData } from "../utils/fetchData";
+import { Collection } from "../utils/types";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 export default function Collections() {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [collections, setCollections] = useState<{ name: string; description: string }[]>([]); 
+  const [collections, setCollections] = useState<Collection[]>([]);
 
-  const handleCreateCollection = (name: string, description: string) => {
-    setCollections([...collections, { name, description }]); 
-    setModalOpen(false); 
+  useEffect(() => {
+    const fetchCollections = async () => {
+      const data = await fetchData("collections", "GET");
+      setCollections(data);
+    };
+    fetchCollections();
+  }, []);
+
+  const handleLike = async (col: Collection) => {
+    const likesCount =
+      typeof col.likes === "number"
+        ? col.likes
+        : parseInt(col.likes || "0", 10);
+    const updatedCol = { ...col, likes: likesCount + 1 };
+
+    try {
+      await fetchData(
+        `Collection/${col.id}`,
+        "PATCH",
+        JSON.stringify({ likes: updatedCol.likes })
+      );
+      setCollections((prev) =>
+        prev.map((p) => (p.id === col.id ? updatedCol : p))
+      );
+    } catch (error) {
+      console.error("Error updating likes:", error);
+    }
   };
 
   return (
-    <main className="bg-soft-white dark:bg-dark-charcoal text-midnight-blue dark:text-pure-white p-8 transition-colors duration-300 min-h-screen flex flex-col">
-      <h2 className="text-3xl font-bold text-center">Your Collections</h2>
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {collections.map((collection, index) => (
-          <div key={index} className="bg-white dark:bg-slate-gray p-4 rounded-lg shadow-md text-center">
-            <h3 className="text-xl font-semibold">{collection.name}</h3>
-            <p className="text-sm text-slate-gray dark:text-soft-white">{collection.description}</p> 
+    <main className="bg-soft-white dark:bg-dark-charcoal text-midnight-blue dark:text-soft-white p-8">
+      <h2 className="text-3xl font-bold text-center">Collections</h2>
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+        {collections.map((col) => (
+          <div
+            key={col.id}
+            className="bg-white dark:bg-midnight-blue p-4 rounded-lg shadow-md text-center"
+          >
+            <div className="flex flex-row gap-4 overflow-x-auto">
+              {col.pokemonCollections.map((poke) => (
+                <img
+                  key={poke.pokemon.id}
+                  src={poke.pokemon.imageUrl}
+                  alt={poke.pokemon.name}
+                  className="h-52 w-auto max-w-full object-contain mx-auto"
+                />
+              ))}
+            </div>
+            <h3 className="text-xl font-semibold mt-4 capitalize">
+              {col.name}
+            </h3>
+            <p className="text-sm text-slate-gray dark:text-soft-white">
+              #{col.id}
+            </p>
+            <button
+              onClick={() => handleLike(col)}
+              className="flex items-center"
+            >
+              {col.likes == 0 ? (
+                <FaRegHeart className="text-black dark:text-soft-white" />
+              ) : (
+                <FaHeart className="text-red-500" />
+              )}
+              <p className="ml-2 text-sm text-midnight-blue dark:text-soft-white">
+                {col.likes || 0} Likes
+              </p>
+            </button>
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-auto mb-8">
-        <button
-          className="text-white bg-electric-yellow dark:bg-electric-yellow py-2 px-6 rounded-lg font-semibold hover:bg-midnight-blue hover:text-soft-white transition-all"
-          onClick={() => setModalOpen(true)}
-          aria-label="Create a new collection"
-        >
-          <FaPlus size={20} className="inline-block mr-2" />
-          Make a new collection
-        </button>
-      </div>
-      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
-        <CollectionForm onSubmit={handleCreateCollection} onClose={() => setModalOpen(false)} />
-      </Modal>
     </main>
   );
 }

@@ -9,3 +9,11 @@ export interface Pokemon extends BaseEntity {
   apiUrl: string;
   likes: number;
 }
+
+export interface Collection extends BaseEntity {
+  name: string;
+  themeId: number;
+  passwordHash: string;
+  likes: number;
+  pokemonCollections: Pokemon[];
+}
