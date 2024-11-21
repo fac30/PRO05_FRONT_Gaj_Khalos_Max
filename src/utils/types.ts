@@ -10,10 +10,14 @@ export interface Pokemon extends BaseEntity {
   likes: number;
 }
 
+export interface PokemonCollection {
+  pokemon: Pokemon;
+}
+
 export interface Collection extends BaseEntity {
   name: string;
   themeId: number;
   passwordHash: string;
   likes: number;
-  pokemonCollections: Pokemon[];
+  pokemonCollections: PokemonCollection[];
 }
