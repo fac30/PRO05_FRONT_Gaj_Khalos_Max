@@ -1,6 +1,8 @@
-# Pokémon
+# PokéLike
 
-A brief description of your project.
+![Pikachu welcomes you!](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg "Pikachu")
+
+Welcome to the **PokeLike**! This project helps you track Pokémon you find cute 🥰 using an a Typescript and React front-end bootstrapped by Vite.
 
 ## Table of Contents
 
@@ -99,6 +101,7 @@ To keep the codebase organized and ensure clear understanding, we follow these b
 # Pokémon Collections Web Application
 
 ## Table of Contents
+
 - [Introduction](#introduction)
 - [Project Structure](#project-structure)
 - [Features](#features)
@@ -128,13 +131,12 @@ Welcome to the **Pokémon Collections** web application! This project allows use
 The project is structured as follows:
 
 src/
-├── assets/           # Images and assets (logo, favicon, etc.)
-├── components/       # Reusable React components
-├── pages/            # Pages for the app (Homepage, Collections, etc.)
-├── App.tsx           # Main application entry point
-├── index.tsx         # React root entry point
-└── styles/           # CSS and Tailwind configuration
-
+├── assets/ # Images and assets (logo, favicon, etc.)
+├── components/ # Reusable React components
+├── pages/ # Pages for the app (Homepage, Collections, etc.)
+├── App.tsx # Main application entry point
+├── index.tsx # React root entry point
+└── styles/ # CSS and Tailwind configuration
 
 ## Features
 
@@ -202,17 +204,18 @@ src/
 While the **front-end** handles basic form validation (like checking if the collection name is not empty), more robust validation and sanitization are planned for the **back-end**. This ensures that all data submitted is secure and free from potential threats.
 
 ### Basic Validation Code in `CollectionForm.tsx`:
+
 ```tsx
 const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
-  const sanitizedName = name.trim().replace(/<[^>]*>?/gm, '');
+  const sanitizedName = name.trim().replace(/<[^>]*>?/gm, "");
   if (sanitizedName.length < 3) {
-    alert('Collection name must be at least 3 characters long.');
+    alert("Collection name must be at least 3 characters long.");
     return;
   }
   onSubmit(sanitizedName, description);
-  setName('');
-  setDescription('');
+  setName("");
+  setDescription("");
 };
 ```
 
@@ -254,4 +257,5 @@ If you enjoyed this project, don't forget to ⭐️ star the repository on GitHu
 Happy coding, and may your collections grow ever stronger! ⚡️🐾
 
 ---
+
 **Made with ❤️ by the Pokémon Collections team**
