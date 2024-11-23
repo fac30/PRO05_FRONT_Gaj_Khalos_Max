@@ -4,7 +4,7 @@ export async function fetchData(
   body?: string
 ): Promise<any> {
   try {
-    const response = await fetch(`http://34.160.33.103/${query}`, {
+    const response = await fetch(`http://34.111.86.146/${query}`, {
       method,
       headers: {
         "Content-Type": "application/json",
