@@ -4,7 +4,7 @@ export async function fetchData(
   body?: string
 ): Promise<any> {
   try {
-    const response = await fetch(`http://34.105.229.117:8080/${query}`, {
+    const response = await fetch(`http://34.160.33.103/${query}`, {
       method,
       headers: {
         "Content-Type": "application/json",
@@ -12,7 +12,6 @@ export async function fetchData(
       ...(body && { body }),
     });
 
-    // Check if the response is OK before parsing as JSON
     if (!response.ok) {
       console.error("HTTP error:", response.status, response.statusText);
       throw new Error(`HTTP error! Status: ${response.status}`);
