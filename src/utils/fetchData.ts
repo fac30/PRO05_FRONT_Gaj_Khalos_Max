@@ -4,11 +4,11 @@ export async function fetchData(
   body?: string
 ): Promise<any> {
   try {
-    const response = await fetch(`http://34.111.86.146/${query}`, {
+    const response = await fetch(`http://35.246.89.97/${query}`, {
       method,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      ...(method !== "GET" && {
+        headers: { "Content-Type": "application/json" },
+      }),
       ...(body && { body }),
     });
 
@@ -17,8 +17,7 @@ export async function fetchData(
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const data = await response.json();
-    return data;
+    return method === "GET" ? response.json() : response.text();
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
